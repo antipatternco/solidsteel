@@ -1,0 +1,12 @@
+[33m*[0m[32m.[0m[32m.[0m
+
+Pending:
+  [33mHomepage Shows Latest Mixes add some scenarios (or delete) /home/vagrant/Development/MyApp/spec/features/homepage_shows_latest_mixes_spec.rb[0m
+    # [36mNot yet implemented[0m
+    # [36m./spec/features/homepage_shows_latest_mixes_spec.rb:4[0m
+
+Finished in 0.10865 seconds (files took 2.34 seconds to load)
+[33m3 examples, 0 failures, 1 pending[0m
+
+Randomized with seed 32069
+
