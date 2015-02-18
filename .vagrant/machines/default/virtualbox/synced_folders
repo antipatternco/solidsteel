@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/paulca/Development/Personal/VagrantDevEnv","disabled":false},"/home/vagrant/Development/MyApp":{"guestpath":"/home/vagrant/Development/MyApp","hostpath":"/Users/paulca/Development/Personal/VagrantDevEnv","disabled":false}}}
+{"virtualbox":{"/home/vagrant/Development/MyApp":{"guestpath":"/home/vagrant/Development/MyApp","hostpath":"/Users/paul/Development/DevEnv","disabled":false}}}
