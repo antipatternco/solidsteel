@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218132133) do
+ActiveRecord::Schema.define(version: 20150218222456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "broadcasts", force: :cascade do |t|
+    t.text     "session_name"
+    t.datetime "broadcast_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -38,6 +45,10 @@ ActiveRecord::Schema.define(version: 20150218132133) do
     t.datetime "broadcast_date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "broadcast_id"
   end
 
+  add_index "mixes", ["broadcast_id"], name: "index_mixes_on_broadcast_id", using: :btree
+
+  add_foreign_key "mixes", "broadcasts"
 end

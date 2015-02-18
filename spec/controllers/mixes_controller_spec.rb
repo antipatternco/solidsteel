@@ -24,9 +24,9 @@ RSpec.describe MixesController, :type => :controller do
   # Mix. As you add validations to Mix, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { "name" => "bar",
-      "url" => "http://",
-      "broadcast_date" => Date.parse("18/02/2015 15:00") }
+    { "name" => "foo",
+      "url" => "http://foo"
+    }
   }
 
   let(:invalid_attributes) {
@@ -37,14 +37,6 @@ RSpec.describe MixesController, :type => :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # MixesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  describe "GET latest" do
-    it "assigns latest mix as @mix" do
-      mix = Mix.create! valid_attributes
-      get :latest, {}, valid_session
-      expect(assigns(:mix)).to eq(mix)
-    end
-  end
 
   describe "GET index" do
     it "assigns all mixes as @mixes" do
@@ -113,14 +105,17 @@ RSpec.describe MixesController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          "name" => "bar"
+        }
       }
 
       it "updates the requested mix" do
         mix = Mix.create! valid_attributes
         put :update, {:id => mix.to_param, :mix => new_attributes}, valid_session
         mix.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:mix).name).to eq('bar')
+        expect(assigns(:mix).url).to eq('http://foo')
       end
 
       it "assigns the requested mix as @mix" do
