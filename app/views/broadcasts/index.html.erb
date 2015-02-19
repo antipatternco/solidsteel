@@ -1,25 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>solid steel broadcasts</h1>
 
-<h1>Listing Broadcasts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @broadcasts.each do |broadcast| %>
-      <tr>
-        <td><%= link_to 'Show', broadcast %></td>
-        <td><%= link_to 'Edit', edit_broadcast_path(broadcast) %></td>
-        <td><%= link_to 'Destroy', broadcast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Broadcast', new_broadcast_path %>
+<ul class="broadcasts">
+<% @broadcasts.each do |broadcast| %>
+  <li><%= link_to "#{broadcast.session_name} - #{broadcast.broadcast_date.strftime("%d %^b %Y")}", broadcast_path(broadcast) %></li>
+<% end %>
+</ul>

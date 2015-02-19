@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>solid steel single broadcast</h1>
 
-<%= link_to 'Edit', edit_broadcast_path(@broadcast) %> |
-<%= link_to 'Back', broadcasts_path %>
+<ul id="broadcast">
+<% @broadcast.mixes.each do |part| %>
+	<li class="part"><%= part.name %></li>
+<% end %>
+</ul>

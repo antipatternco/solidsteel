@@ -25,5 +25,7 @@ feature "Homepage shows latest broadcast", :type => :feature do
     expect(page).to have_text("Mix 16th Feb")
     expect(page).to have_selector(".latest-mix")
     expect(page).to have_selector(".part", count: 2)
+    expect(page).to have_text("part 1")
+    expect(page).to have_text("part 2")
   end
 end
