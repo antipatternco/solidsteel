@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Broadcast.create({
+	session_name: "test broadcast",
+	broadcast_date: Date.parse("01/01/2012 00:00")
+})

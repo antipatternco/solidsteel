@@ -1,9 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Mix, :type => :model do
+
+  it "should have a factory" do
+    expect(FactoryGirl.build(:mix)).to be_valid
+  end
+
   it "won't save without a URL" do
     expect(Mix.new(name: "Foo")).not_to be_valid
   end
+
+  it { should belong_to :broadcast }
 
   it "returns latest mix" do
     todayMix = Mix.create!(name: "Foo", url: "http://foo", broadcast_date: Date.parse("18/02/2015 15:00"))
