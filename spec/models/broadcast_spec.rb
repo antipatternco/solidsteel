@@ -17,10 +17,11 @@ RSpec.describe Broadcast, :type => :model do
   it { should have_many :mixes }
 
   it "returns latest broadcast" do
-    dayBeforeYesterdayBroadcast = FactoryGirl.create(:broadcast)
-    yesterdayBroadcast = FactoryGirl.create(:broadcast)
-    todayBroadcast = FactoryGirl.create(:broadcast)
+    dayBeforeYesterdayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("05/01/2012 00:00"))
+    yesterdayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("12/01/2012 00:00"))
+    todayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("17/01/2012 00:00"))
 
+    puts todayBroadcast.inspect
     expect(Broadcast.get_latest).to eq(todayBroadcast)
   end
 end

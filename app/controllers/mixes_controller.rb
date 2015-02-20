@@ -22,14 +22,14 @@ class MixesController < ApplicationController
 
   # GET /mixes/1/edit
   def edit
-  end
+  end 
 
   # POST /mixes
   def create
     @mix = Mix.new(mix_params)
 
     if @mix.save
-      redirect_to @mix, notice: 'Mix was successfully created.'
+      redirect_to broadcast_mixes_url(@mix), notice: 'Mix was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class MixesController < ApplicationController
   # PATCH/PUT /mixes/1
   def update
     if @mix.update(mix_params)
-      redirect_to @mix, notice: 'Mix was successfully updated.'
+      redirect_to broadcast_mixes_url(@mix), notice: 'Mix was successfully updated.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class MixesController < ApplicationController
   # DELETE /mixes/1
   def destroy
     @mix.destroy
-    redirect_to mixes_url, notice: 'Mix was successfully destroyed.'
+    redirect_to broadcast_mixes_url, notice: 'Mix was successfully destroyed.'
   end
 
   private
@@ -58,6 +58,6 @@ class MixesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mix_params
-      params.require(:mix).permit(:name, :url)
+      params.require(:mix).permit(:name, :url, :broadcast_id)
     end
 end

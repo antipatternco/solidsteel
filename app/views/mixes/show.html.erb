@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1>solid steel broadcast part page</h1>
 
-<%= link_to 'Edit', edit_mix_path(@mix) %> |
-<%= link_to 'Back', mixes_path %>
+<%= @mix.name %>
+(<%= @mix.broadcast.session_name %>)
