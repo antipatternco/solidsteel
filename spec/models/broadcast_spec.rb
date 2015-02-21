@@ -20,8 +20,7 @@ RSpec.describe Broadcast, :type => :model do
     dayBeforeYesterdayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("05/01/2012 00:00"))
     yesterdayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("12/01/2012 00:00"))
     todayBroadcast = FactoryGirl.create(:broadcast, broadcast_date: Date.parse("17/01/2012 00:00"))
-
-    puts todayBroadcast.inspect
+    
     expect(Broadcast.get_latest).to eq(todayBroadcast)
   end
 end

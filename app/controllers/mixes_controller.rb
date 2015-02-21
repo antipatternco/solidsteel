@@ -3,7 +3,8 @@ class MixesController < ApplicationController
 
   # GET /mixes
   def index
-    @mixes = Mix.all
+    @broadcast = Broadcast.find(params[:broadcast_id])
+    @mixes = @broadcast.mixes
   end
 
   # GET /latest
@@ -13,6 +14,8 @@ class MixesController < ApplicationController
 
   # GET /mixes/1
   def show
+    @broadcast = Broadcast.find(params[:broadcast_id])
+    @mix = @broadcast.mixes.find(params[:id])
   end
 
   # GET /mixes/new

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MixesController, :type => :controller do
 
   before(:each) do
-    @broadcast = FactoryGirl.create(:broadcast)
+    @broadcast = FactoryGirl.create(:broadcast_with_mixes, mixes_count: 1)
   end
 
   let(:valid_attributes) {
@@ -22,15 +22,15 @@ RSpec.describe MixesController, :type => :controller do
 
   describe "GET index" do
     it "assigns all mixes as @mixes" do
-      mix = Mix.create! valid_attributes
-      get :index, { :broadcast_id => 1 }, valid_session
+      mix = @broadcast.mixes.first
+      get :index, { :broadcast_id => @broadcast.id }, valid_session
       expect(assigns(:mixes)).to eq([mix])
     end
   end
 
   describe "GET show" do
     it "assigns the requested mix as @mix" do
-      mix = Mix.create! valid_attributes
+      mix = @broadcast.mixes.first
       get :show, {:id => mix.to_param, :broadcast_id => @broadcast.id}, valid_session
       expect(assigns(:mix)).to eq(mix)
     end
@@ -45,7 +45,7 @@ RSpec.describe MixesController, :type => :controller do
 
   describe "GET edit" do
     it "assigns the requested mix as @mix" do
-      mix = Mix.create! valid_attributes
+      mix = @broadcast.mixes.first
       get :edit, {:id => mix.to_param, :broadcast_id => @broadcast.id}, valid_session
       expect(assigns(:mix)).to eq(mix)
     end
