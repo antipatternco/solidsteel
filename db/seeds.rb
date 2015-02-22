@@ -34,49 +34,49 @@ Mix.create({
 })
 
 Mix.create({
-	name: "test mix 1",
+	name: "test mix 3",
 	url: "htpt://foo",
 	broadcast: b2
 })
 
 Mix.create({
-	name: "test mix 2",
+	name: "test mix 4",
 	url: "htpt://bar",
 	broadcast: b2
 })
 
 Mix.create({
-	name: "test mix 1",
+	name: "test mix 5",
 	url: "htpt://foo",
 	broadcast: b2
 })
 
 Mix.create({
-	name: "test mix 2",
+	name: "test mix 6",
 	url: "htpt://bar",
 	broadcast: b2
 })
 
 Mix.create({
-	name: "test mix 1",
+	name: "test mix 7",
 	url: "htpt://foo",
 	broadcast: b3
 })
 
 Mix.create({
-	name: "test mix 2",
+	name: "test mix 8",
 	url: "htpt://bar",
 	broadcast: b3
 })
 
 Mix.create({
-	name: "test mix 1",
+	name: "test mix 9",
 	url: "htpt://foo",
 	broadcast: b3
 })
 
 Mix.create({
-	name: "test mix 2",
+	name: "test mix 10",
 	url: "htpt://bar",
 	broadcast: b3
 })
