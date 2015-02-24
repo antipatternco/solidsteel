@@ -65,8 +65,8 @@ class Row
 end
 
 # Add get_row method to Mysql2::Result class
-class Mysql2::Result
-  def get_row index
-    Row.new self.fields, self.to_a[index].to_a
-  end
-end
+# class Mysql2::Result
+#   def get_row index
+#     Row.new self.fields, self.to_a[index].to_a
+#   end
+# end
