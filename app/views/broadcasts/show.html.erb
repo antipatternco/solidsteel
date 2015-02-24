@@ -2,6 +2,6 @@
 
 <ul id="broadcast">
 <% @broadcast.mixes.each do |part| %>
-	<li class="part"><%= part.name %></li>
+	<li class="part"><%= link_to "#{part.name}", broadcast_mix_path(@broadcast, part) %></li>
 <% end %>
 </ul>

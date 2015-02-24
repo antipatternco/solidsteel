@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219123419) do
+ActiveRecord::Schema.define(version: 20150223233653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20150219123419) do
   create_table "broadcasts", force: :cascade do |t|
     t.text     "session_name"
     t.datetime "broadcast_date"
+    t.text     "notes"
+    t.text     "altnotes"
+    t.text     "link1"
+    t.text     "link2"
+    t.text     "link3"
+    t.text     "link4"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -41,14 +47,30 @@ ActiveRecord::Schema.define(version: 20150219123419) do
 
   create_table "mixes", force: :cascade do |t|
     t.text     "name"
-    t.text     "url"
-    t.datetime "broadcast_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "part"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "broadcast_id"
   end
 
   add_index "mixes", ["broadcast_id"], name: "index_mixes_on_broadcast_id", using: :btree
 
+  create_table "tracks", force: :cascade do |t|
+    t.text     "artist"
+    t.text     "title"
+    t.text     "composed"
+    t.text     "published"
+    t.text     "record_label"
+    t.text     "catalogue_no"
+    t.text     "duration"
+    t.text     "notes"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "mix_id"
+  end
+
+  add_index "tracks", ["mix_id"], name: "index_tracks_on_mix_id", using: :btree
+
   add_foreign_key "mixes", "broadcasts"
+  add_foreign_key "tracks", "mixes"
 end

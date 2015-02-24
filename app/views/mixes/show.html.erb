@@ -2,3 +2,6 @@
 
 <%= @mix.name %>
 (<%= @mix.broadcast.session_name %>)
+<% @mix.tracks.each do |t| %>
+	<li class="part"><%= t.title %></li>
+<% end %>
