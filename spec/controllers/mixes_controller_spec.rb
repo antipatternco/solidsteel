@@ -7,14 +7,14 @@ RSpec.describe MixesController, :type => :controller do
   end
 
   let(:valid_attributes) {
-    { "name" => "foo",
-      "url" => "http://foo"
+    { 
+      "name" => "foo"
     }
   }
 
   let(:invalid_attributes) {
     { 
-      "url" => ""
+      "name" => ""
     }
   }
 
@@ -97,7 +97,6 @@ RSpec.describe MixesController, :type => :controller do
         put :update, {:id => mix.to_param, :mix => new_attributes, :broadcast_id => @broadcast.id}, valid_session
         mix.reload
         expect(assigns(:mix).name).to eq('bar')
-        expect(assigns(:mix).url).to eq('http://foo')
       end
 
       it "assigns the requested mix as @mix" do

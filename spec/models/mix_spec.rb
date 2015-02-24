@@ -6,8 +6,8 @@ RSpec.describe Mix, :type => :model do
     expect(FactoryGirl.build(:mix)).to be_valid
   end
 
-  it "won't save without a URL" do
-    expect(Mix.new(name: "Foo")).not_to be_valid
+  it "won't save without a name" do
+    expect(Mix.new).not_to be_valid
   end
 
   it { should belong_to :broadcast }

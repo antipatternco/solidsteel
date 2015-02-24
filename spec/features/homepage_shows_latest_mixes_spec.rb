@@ -10,15 +10,8 @@ feature "Homepage shows latest broadcast", :type => :feature do
                     :broadcast_date => Date.parse("15/02/2015 15:00")
                    )
 
-	  mix1 = Mix.create(:name => "part 1",
- 					  :url => "http://foo",
- 					  :broadcast_id => broadcast.id
- 					)
- 	
- 	  mix2 = Mix.create(:name => "part 2",
- 					  :url => "http://bar",
- 					  :broadcast_id => broadcast.id
- 					)
+    FactoryGirl.create(:mix, name: "part 1", broadcast_id: broadcast.id)
+ 	  FactoryGirl.create(:mix, name: "part 2", broadcast_id: broadcast.id)
     
     visit "/"
     expect(page).to have_text("solid steel homepage")

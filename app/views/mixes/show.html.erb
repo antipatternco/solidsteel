@@ -1,7 +1,10 @@
-<h1>solid steel broadcast part page</h1>
+<h1>solid steel broadcast: part <%= @mix.part %></h1>
 
-<%= @mix.name %>
+<h2>Mix name: <%= @mix.name %></h2>
+<h3>Tracklisting:</h3>
 (<%= @mix.broadcast.session_name %>)
+<ul id="tracklist">
 <% @mix.tracks.each do |t| %>
-	<li class="part"><%= t.title %></li>
+	<li class="track"><%= t.title %></li>
 <% end %>
+</ul>

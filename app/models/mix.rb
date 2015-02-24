@@ -8,4 +8,5 @@ class Mix < ActiveRecord::Base
 		self.order("broadcast_date DESC").first
 	end
 
+	validates :name, :presence => true
 end
