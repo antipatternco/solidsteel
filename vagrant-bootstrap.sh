@@ -10,16 +10,16 @@ sudo apt-get install nodejs -y
 
 # install npm
 echo "Installing npm..."
-sudo apt-get install npm -y
+#sudo apt-get install npm -y
 
 # ubuntu/node/npm config
-npm config set prefix ~/npm
-echo 'export PATH="$PATH:$HOME/npm/bin"' >> ~/.bashrc
+#npm config set prefix ~/npm
+#echo 'export PATH="$PATH:$HOME/npm/bin"' >> ~/.bashrc
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 # install ember-cli
 echo "Installing ember-cli..."
-npm install ember-cli -g
+#npm install ember-cli -g
 
 # start rvm install
 echo "Installing rvm..."
@@ -33,7 +33,7 @@ source /home/vagrant/.rvm/scripts/rvm
 
 # install qt for use with capybara
 echo "Installing qt..."
-sudo apt-get install libqtwebkit-dev -y
+#sudo apt-get install libqtwebkit-dev -y
 
 # install postgres
 echo "Installing postgres..."
@@ -53,10 +53,14 @@ sudo su - postgres -c 'createuser -s vagrant'
 # change default ssh login location
 echo 'cd ~/Development/MyApp' >> /home/vagrant/.bashrc
 
+# install bundler
+echo "install bundler..."
+gem install bundler
+
 # bundle install
-echo "bundle install..."
+echo "do bundle install..."
 cd /home/vagrant/Development/MyApp
-bundle install
+bundle install --without development test
 
 echo "runnning app setup"
 bin/setup

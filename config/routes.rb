@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   	resources :mixes
   end
   
+  get '/search' => 'broadcasts#search'
+
   get '/latest' => 'mixes#latest'
   
   root 'broadcasts#latest'

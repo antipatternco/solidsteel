@@ -6,6 +6,7 @@ module API
       mount API::V1::Broadcasts
       mount API::V1::Mixes
       mount API::V1::Tracks
+      mount API::V1::Search
       # mount API::V1::AnotherResource
 
       add_swagger_documentation(

@@ -6,6 +6,11 @@ class BroadcastsController < ApplicationController
     @broadcasts = Broadcast.all
   end
 
+  def search
+    @broadcasts = Broadcast.contains(params[:contains])
+    render "broadcasts/index"
+  end
+
   # GET /broadcasts
   def latest
     @broadcast = Broadcast.get_latest
