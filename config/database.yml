@@ -1,8 +1,8 @@
 development: &default
-  adapter: postgresql
-  database: MyApp_development
-  username: vagrant
-  password: vagrant
+  adapter: mysql2
+  database: 
+  username: 
+  password: 
   encoding: utf8
   host: localhost
   min_messages: warning
