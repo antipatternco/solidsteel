@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 ruby "2.2.0"
 
-gem "airbrake"
 gem "bourbon", "~> 4.1.0"
 gem "coffee-rails", "~> 4.1.0"
 gem "delayed_job_active_record"
@@ -12,7 +11,6 @@ gem "high_voltage"
 gem "i18n-tasks"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
-gem "newrelic_rpm"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
 gem "rack-timeout"
@@ -30,6 +28,7 @@ gem "grape"
 gem "grape-active_model_serializers", :git => "https://github.com/jrhe/grape-active_model_serializers"
 gem "grape-swagger-rails"
 gem "rack-cors", require: "rack/cors"
+gem 'casein', '~>5.1.1'
 
 group :development do
   gem "spring"
