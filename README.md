@@ -1,32 +1,23 @@
-# Myapp
+# Solid Steel Website and API
 
-## Getting Started
+## Prerequisites
 
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
+You will need the following things properly installed on your computer.
 
-    % ./bin/setup
+* [Git](http://git-scm.com/)
+* [Vagrant](https://www.vagrantup.com/)
 
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
+## Installation
 
-[this script]: https://github.com/thoughtbot/laptop
+* `git clone <repository-url>` this repository
+* change into the new directory
+* `vagrant up`
+* `vagrant ssh`
+* `bin/setup` (rake db:create db:migrate)
+* `mysql -u root -p MyApp_Development < lib/tasks/ss_wed_4_mar.sql`
+* `bin/rails s -b 0.0.0.0`
 
-After setting up, you can run the application using [foreman]:
 
-    % foreman start
+## Running / Development
 
-If you don't have `foreman`, see [Foreman's install instructions][foreman]. It
-is [purposefully excluded from the project's `Gemfile`][exclude].
-
-[foreman]: https://github.com/ddollar/foreman
-[exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
-
-## Guidelines
-
-Use the following guides for getting things done, programming well, and
-programming in style.
-
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
+* Visit the site/API at [http://localhost:3001](http://localhost:3001) and [http://localhost:3001/api/v1/broadcasts](http://localhost:3001/api/v1/broadcasts) and [http://localhost:3001/documentation](http://localhost:3001/documentation)
