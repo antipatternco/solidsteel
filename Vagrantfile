@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # box for rails dev configured with rvm, mysql, nginx
   # based on "ubuntu/trusty64"
-  config.vm.box = "https://www.dropbox.com/s/462hom8dnzenaoy/package.box?dl=0"
+  config.vm.box = "https://www.dropbox.com/s/462hom8dnzenaoy/package.box?dl=1"
 
   #config.vm.provision :shell, path: "vagrant-bootstrap.sh"
 
