@@ -13,3 +13,4 @@
 /tags
 /tmp/*
 /.vagrant/*
+/config/database.yml
