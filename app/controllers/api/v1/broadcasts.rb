@@ -6,7 +6,12 @@ module API
       resource :broadcasts do
         desc "Return all broadcasts"
         get "", root: :broadcasts do
-          Broadcast.all
+          Broadcast.last
+        end
+
+        desc "Return latest broadcast"
+        get "latest", root: :broadcasts do
+          Broadcast.last
         end
 
         desc "Return a broadcast"

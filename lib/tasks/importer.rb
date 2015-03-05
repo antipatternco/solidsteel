@@ -32,8 +32,8 @@ class Importer
     end
     
     # call sub-importer modules
-    #import_broadcasts
-    #import_tracks
+    import_broadcasts
+    import_tracks
     import_synopsis
   end
 
@@ -64,9 +64,9 @@ class Row
   end
 end
 
-# Add get_row method to Mysql2::Result class
-# class Mysql2::Result
-#   def get_row index
-#     Row.new self.fields, self.to_a[index].to_a
-#   end
-# end
+#Add get_row method to Mysql2::Result class
+class Mysql2::Result
+  def get_row index
+    Row.new self.fields, self.to_a[index].to_a
+  end
+end
