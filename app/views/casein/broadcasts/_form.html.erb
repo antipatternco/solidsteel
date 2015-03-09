@@ -14,4 +14,9 @@
 	<div class="col-lg-12">
 		<%= casein_text_area f, f.object, :altnotes %>
 	</div>
+
+	<div class="col-lg-6">
+		<%= casein_file_field f, f.object, "broadcast", :image , { :casein_label => "Broadcast image (one only)"}%>
+		<%= if @broadcast.image? then image_tag(@broadcast.image, width: '300') else content_tag(:span, "No image yet") end %>
+	</div>
 </div>

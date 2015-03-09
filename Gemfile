@@ -29,6 +29,8 @@ gem "grape-active_model_serializers", :git => "https://github.com/jrhe/grape-act
 gem "grape-swagger-rails"
 gem "rack-cors", require: "rack/cors"
 gem 'casein', '~>5.1.1'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip-meta'
 
 group :development do
   gem "spring"

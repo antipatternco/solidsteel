@@ -63,6 +63,6 @@ class BroadcastsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def broadcast_params
-      params[:broadcast].permit(:session_name, :broadcast_date)
+      params[:broadcast].permit(:session_name, :broadcast_date, :notes, :altnotes, :image)
     end
 end
