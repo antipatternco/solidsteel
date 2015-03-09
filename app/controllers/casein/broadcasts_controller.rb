@@ -63,7 +63,7 @@ module Casein
     private
       
       def broadcast_params
-        params.require(:broadcast).permit(:session_name, :broadcast_date, :notes, :altnotes, :image)
+        params.require(:broadcast).permit(:session_name, :broadcast_date, :notes, :altnotes, :image, mixes_attributes: [:id, :url, :name])
       end
 
   end

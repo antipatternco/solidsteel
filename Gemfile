@@ -31,6 +31,7 @@ gem "rack-cors", require: "rack/cors"
 gem 'casein', '~>5.1.1'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'paperclip-meta'
+gem 'nested_form_fields'
 
 group :development do
   gem "spring"

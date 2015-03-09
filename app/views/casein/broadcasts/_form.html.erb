@@ -19,4 +19,28 @@
 		<%= casein_file_field f, f.object, "broadcast", :image , { :casein_label => "Broadcast image (one only)"}%>
 		<%= if @broadcast.image? then image_tag(@broadcast.image, width: '300') else content_tag(:span, "No image yet") end %>
 	</div>
+
+
+	<%= f.nested_fields_for :mixes do |ff| %>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label class="control-label" for="mix_name">Name</label>
+				<div class="well">
+					<%= ff.text_field :name %>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label class="control-label" for="mix_url">URL</label>
+				<div class="well">
+					<%= ff.text_field :url %><span style="margin-left: 20px"><%= ff.remove_nested_fields_link "delete this link" %></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<%= f.add_nested_fields_link :mixes, "Add another mix" %>
+
 </div>

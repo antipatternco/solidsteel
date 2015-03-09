@@ -1,4 +1,4 @@
 class MixSerializer < ActiveModel::Serializer
-  attributes :id, :name, :part
+  attributes :id, :name, :part, :url
   has_many :tracks
 end

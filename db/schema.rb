@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308225017) do
+ActiveRecord::Schema.define(version: 20150309212634) do
 
   create_table "broadcasts", force: :cascade do |t|
     t.text     "session_name",       limit: 65535
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150308225017) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.string   "url",                limit: 255
   end
 
   add_index "mixes", ["broadcast_id"], name: "index_mixes_on_broadcast_id", using: :btree
