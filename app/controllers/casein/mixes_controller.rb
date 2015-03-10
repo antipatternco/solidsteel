@@ -59,7 +59,7 @@ module Casein
     private
       
       def mix_params
-        params.require(:mix).permit(:name, :part)
+        params.require(:mix).permit(:name, :part, :url, :image)
       end
 
   end
