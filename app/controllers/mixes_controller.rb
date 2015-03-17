@@ -61,6 +61,6 @@ class MixesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mix_params
-      params.require(:mix).permit(:name, :url, :broadcast_id)
+      params.require(:mix).permit(:name, :part, :url, :soundcloudId, :mixcloudId, :background_image, :mix_image)
     end
 end
