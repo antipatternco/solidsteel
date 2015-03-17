@@ -18,8 +18,13 @@
 	</div>
 
 	<div class="col-lg-6">
-		<%= casein_file_field f, f.object, "mix", :image , { :casein_label => "Mix background image (one only)"}%>
-		<%= if @mix.image? then image_tag(@mix.image, width: '300', height: 'auto') else content_tag(:span, "No image yet") end %>
+		<%= casein_file_field f, f.object, "mix", :background_image , { :casein_label => "Mix background image (one only)"}%>
+		<%= if @mix.background_image? then image_tag(@mix.background_image, width: '300', height: 'auto') else content_tag(:span, "No image yet") end %>
+	</div>
+
+	<div class="col-lg-6">
+		<%= casein_file_field f, f.object, "mix", :mix_image , { :casein_label => "Mix thumbnail image (one only)"}%>
+		<%= if @mix.mix_image? then image_tag(@mix.mix_image, width: '300', height: 'auto') else content_tag(:span, "No image yet") end %>
 	</div>
 
 </div>

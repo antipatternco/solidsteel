@@ -7,6 +7,7 @@
 			<th><%= casein_sort_link "Part", :part %></th>
 			<th><%= casein_sort_link "Soundcloud", :soundcloudId %></th>
 			<th><%= casein_sort_link "Mixcloud", :mixcloudId %></th>
+			<th><%= casein_sort_link "Broadcast", :broadcast %></th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -17,6 +18,7 @@
 			<td><%= casein_table_cell_link mix.part, casein_mix_path(mix) %></td>
 			<td><%= casein_table_cell_link mix.soundcloudId, casein_mix_path(mix) %></td>
 			<td><%= casein_table_cell_link mix.mixcloudId, casein_mix_path(mix) %></td>
+			<td><%= casein_table_cell_link mix.broadcast.id, casein_broadcast_path(mix.broadcast.id) %></td>
 			<td class="delete">
 				<%= link_to(casein_show_row_icon("trash"), casein_mix_path(mix), :method => :delete, :data => { :confirm => "Are you sure you want to delete this mix?" }) %>
 			</td>
