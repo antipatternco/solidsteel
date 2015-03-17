@@ -6,6 +6,6 @@ class AddUrlToMix < ActiveRecord::Migration
   end
 
   def self.down
-    remove_attachment :mixes, :url
+    remove_column :mixes, :url, :string
   end
 end

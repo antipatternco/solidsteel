@@ -13,7 +13,7 @@
 	<% broadcasts.each do |broadcast| %>
 		<tr>
 			<td><%= casein_table_cell_link broadcast.session_name, casein_broadcast_path(broadcast) %></td>
-			<td><%= casein_table_cell_link broadcast.broadcast_date, casein_broadcast_path(broadcast) %></td>
+			<td><%= casein_table_cell_link broadcast.broadcast_date.strftime("%d %^b %Y"), casein_broadcast_path(broadcast) %></td>
 			<td><%= casein_table_cell_link broadcast.notes, casein_broadcast_path(broadcast) %></td>
 			<td class="delete">
 				<%= link_to(casein_show_row_icon("trash"), casein_broadcast_path(broadcast), :method => :delete, :data => { :confirm => "Are you sure you want to delete this broadcast?" }) %>

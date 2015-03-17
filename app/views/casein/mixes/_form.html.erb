@@ -10,12 +10,16 @@
 	</div>
 
 	<div class="col-lg-6">
-		<%= casein_text_field f, f.object, :url %>
+		<%= casein_text_field f, f.object, :soundcloudId %>
+	</div>
+
+	<div class="col-lg-6">
+		<%= casein_text_field f, f.object, :mixcloudId %>
 	</div>
 
 	<div class="col-lg-6">
 		<%= casein_file_field f, f.object, "mix", :image , { :casein_label => "Mix background image (one only)"}%>
-		<%= if @mix.image? then image_tag(@mix.image, width: '300') else content_tag(:span, "No image yet") end %>
+		<%= if @mix.image? then image_tag(@mix.image, width: '300', height: 'auto') else content_tag(:span, "No image yet") end %>
 	</div>
 
 </div>

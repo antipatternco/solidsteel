@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) +  "/broadcasts_importer"
 require File.dirname(__FILE__) +  "/tracks_importer"
 require File.dirname(__FILE__) +  "/synopsis_importer"
+require File.dirname(__FILE__) +  "/audio_importer"
 
 class Importer
 
@@ -8,6 +9,7 @@ class Importer
   include BroadcastsImporter
   include TracksImporter
   include SynopsisImporter
+  include AudioImporter
 
   # initializer for a new importer
   def initialize new, old
@@ -35,6 +37,8 @@ class Importer
     import_broadcasts
     import_tracks
     import_synopsis
+
+    import_audio
   end
 
   # later in the import process you have to switch beween
