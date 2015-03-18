@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316102747) do
+ActiveRecord::Schema.define(version: 20150317201334) do
 
   create_table "broadcasts", force: :cascade do |t|
     t.text     "session_name",       limit: 65535
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150316102747) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.boolean  "featured",           limit: 1
   end
 
   create_table "casein_admin_users", force: :cascade do |t|
