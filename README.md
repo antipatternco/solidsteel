@@ -14,7 +14,7 @@ You will need the following things properly installed on your computer.
 * `vagrant up`
 * `vagrant ssh`
 * `bin/setup` (rake db:create db:migrate)
-* `mysql -u root -p MyApp_Development < lib/tasks/ss_wed_4_mar.sql`
+* `mysql -u root -p MyApp_Development < lib/tasks/ss_tue_17_mar.sql`
 * `bin/rails s -b 0.0.0.0`
 
 
