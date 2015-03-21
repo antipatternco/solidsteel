@@ -3,7 +3,7 @@ class Broadcast < ActiveRecord::Base
 
   default_scope { order('broadcast_date DESC') } 
 
-  scope :contains, -> (session_name) { where("session_name like ?", "%#{session_name}%") }
+  scope :contains, -> (session_name) { where("session_name REGEXP '[[:<:]]#{session_name}[[:>:]]'") }
 
   scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ) if year.present? }
 

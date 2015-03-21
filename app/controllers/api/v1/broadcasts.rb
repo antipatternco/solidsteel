@@ -8,6 +8,8 @@ module API
         get "", root: :broadcasts, each_serializer: SimpleBroadcastSerializer do
           if params[:year].present?
             Broadcast.year(params[:year])
+          elsif params[:contains].present?
+            Broadcast.contains(params[:contains])
           else
             "you need to supply a year query parameter value like /broadcasts?year=2015, or use /broadcasts/latest"
           end
@@ -15,7 +17,7 @@ module API
 
         desc "Return latest broadcast"
         get "latest", root: :broadcasts, serializer: BroadcastSerializer do
-          Broadcast.last
+          Broadcast.get_latest
         end
 
         desc "Return a broadcast"
