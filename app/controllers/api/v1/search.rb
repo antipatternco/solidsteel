@@ -8,7 +8,7 @@ module API
         params do
           requires :contains, type: String, desc: "search param"
         end
-        get "", root: "search" do
+        get "", root: "search", each_serializer: SimpleBroadcastSerializer do
           Broadcast.contains(params[:contains])
         end
       end

@@ -7,7 +7,7 @@ class BroadcastsController < ApplicationController
   end
 
   def search
-    @broadcasts = Broadcast.contains(params[:contains])
+    @broadcasts = Broadcast.contains(params[:contains]).order(sort_order("broadcast_date DESC"))
     render "broadcasts/index"
   end
 
