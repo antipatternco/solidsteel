@@ -13,7 +13,7 @@ module Casein
     
     def index
       @casein_page_title = 'Broadcasts'
-  		@broadcasts = Broadcast.order(sort_order(:id)).paginate :page => params[:page]
+  		@broadcasts = Broadcast.order("broadcast_date DESC").paginate :page => params[:page]
     end
   
     def show

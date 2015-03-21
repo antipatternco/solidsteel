@@ -8,7 +8,7 @@ module Casein
 
     # Filename of logo image. Ideally, it should be a transparent PNG around 140x30px
     def casein_config_logo
-      'ss_100_x_100.jpg'
+      'ss_120_x_120.gif'
     end
 
     # The server hostname where Casein will run
