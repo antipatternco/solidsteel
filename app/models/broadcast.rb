@@ -1,4 +1,9 @@
 class Broadcast < ActiveRecord::Base
+  before_save :set_tags
+
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+  acts_as_taggable_on :processed_session_name
+
   has_many :mixes
 
   default_scope { order('broadcast_date DESC') } 
@@ -9,6 +14,10 @@ class Broadcast < ActiveRecord::Base
 
   def self.get_latest
 	  self.order("broadcast_date DESC").first
+  end
+
+  def set_tags
+    self.tag_list = self.session_name
   end
 
 	validates :session_name, :broadcast_date, :presence => true

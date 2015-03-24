@@ -10,6 +10,7 @@
 			<th>part 3</th>
 			<th>part 4</th>
 			<th>Notes</th>
+			<th>djs</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -25,6 +26,7 @@
 			<td><% if broadcast.mixes[3]%><% end %><%= broadcast.mixes[3].name %></td>
 
 			<td><%= casein_table_cell_link broadcast.notes, casein_broadcast_path(broadcast) %></td>
+			<td><% broadcast.tags.each do |t| %><%= t %><br /><% end %></td>
 			<td class="delete">
 				<%= link_to(casein_show_row_icon("trash"), casein_broadcast_path(broadcast), :method => :delete, :data => { :confirm => "Are you sure you want to delete this broadcast?" }) %>
 			</td>
