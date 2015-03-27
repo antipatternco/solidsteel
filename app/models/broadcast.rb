@@ -12,6 +12,8 @@ class Broadcast < ActiveRecord::Base
 
   scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ) if year.present? }
 
+  scope :featured, -> { where(featured: true) }
+
   def self.get_latest
 	  self.order("broadcast_date DESC").first
   end
