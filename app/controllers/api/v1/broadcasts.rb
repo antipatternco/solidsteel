@@ -7,7 +7,7 @@ module API
         desc "Return all broadcasts"
         get "", root: :broadcasts, each_serializer: SimpleBroadcastSerializer do
           if params[:year].present?
-            Broadcast.year(params[:year])
+            Broadcast.year(params[:year]).order('broadcast_date ASC')
           elsif params[:contains].present?
             Broadcast.contains(params[:contains])
           elsif params[:featured].present?

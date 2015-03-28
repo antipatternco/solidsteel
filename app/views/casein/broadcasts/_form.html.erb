@@ -20,10 +20,12 @@
 	</div>
 
 	<div class="col-lg-6">
-		<%= casein_check_box f, f.object, :featured, { :casein_label => "Add to 'featured' filter in sidepanel?"}%>
+		<%= casein_check_box f, f.object, :highlight, { :casein_label => "Add to 'highlights' filter in sidepanel?"}%>
 	</div>
 
-	
+	<div class="col-lg-6">
+		<%= casein_check_box f, f.object, :featured, { :casein_label => "Add to 'featured' section?"}%>
+	</div>
 
 	<div class="col-lg-12">
 		<h2>This broadcast's mixes:</h2>
