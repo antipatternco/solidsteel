@@ -12,6 +12,8 @@ module API
             Broadcast.contains(params[:contains])
           elsif params[:featured].present?
             Broadcast.featured
+          elsif params[:highlights].present?
+            Broadcast.highlights
           else
             "you need to supply a year query parameter value like /broadcasts?year=2015, or use /broadcasts/latest"
           end

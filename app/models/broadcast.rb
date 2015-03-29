@@ -12,6 +12,8 @@ class Broadcast < ActiveRecord::Base
 
   scope :featured, -> { where(featured: true) }
 
+  scope :highlights, -> { where(highlight: true) }
+
   def self.get_latest
 	  self.order("broadcast_date DESC").first
   end
