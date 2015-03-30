@@ -24,8 +24,12 @@ class Broadcast < ActiveRecord::Base
 
 	validates :session_name, :broadcast_date, :presence => true
 
-	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/ss_broadcast.jpg"
+	has_attached_file :image, :styles => { :thumb => "60x60>" }, :default_url => "/images/:style/ss_broadcast_icon.png"
+
+  has_attached_file :background_image, :styles => { :thumb => "144x90>" }, :default_url => "/images/:style/ss_broadcast_bg.png"
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
 
   accepts_nested_attributes_for :mixes, allow_destroy: true
 end
