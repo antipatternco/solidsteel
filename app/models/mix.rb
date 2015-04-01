@@ -19,6 +19,8 @@ class Mix < ActiveRecord::Base
   	validates_attachment_content_type :mix_image, :content_type => /\Aimage\/.*\Z/
 
   	def extract_soundcloud_id
-		#self.soundcloudId = DateTime.now
+		if self.soundcloudId
+            self.soundcloudId = self.soundcloudId[/.*tracks\/(\d*)[&|%]/,1]
+        end
 	end
 end

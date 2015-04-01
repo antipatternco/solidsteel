@@ -1,21 +1,34 @@
-<h2>landing</h2>
+<h2>Solid Steel Content Management System</h2>
 
+<h4>Instructions for use</h4>
 
-landing page Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<br >
+
+<h5><b>Uploading a show</b></h5>
+<p>Uploading a show needs to be done with an Excel file. <a href="/images/original/excel.xls">Click here for the template.</a>. When you want to upload a show, click the "Add a new show" link on the right. Then click the "Choose file button", select your spreadsheet and click the "Add new broadcast" button. It should take around 10-20 seconds to process the file and create the broadcast, mix and track entries.</p>
+<p>Once you've uploaded the file and it's been processed, you need to edit the show to add the Soundcloud IDs and any images.</p>
+
+<br >
+
+<h5><b>Editing a show</b></h5>
+<p>Shows are made up of three things: broadcasts, mixes and tracks. All of these will be created when you upload the spreadsheet, but you can also edit them afterwards. Each thing can be edited by clicking the appropriate menu item.</p>
+
+<br />
+
+<p style="text-decoration: underline">Broadcasts</p>
+<p>A broadcast contans the main name of the show, the mix notes, a large image which appear if the show is in the featured mixes section, and a small circular image which appears in the timeline sidepanel. It also has two checkboxes: 'highlighted' and 'featured'. If you check the 'highlighted' checkbox, this show appears in the 'highlights of the year' filter in the sidepanel. If you check the 'featured' checkbox the show will appear in the featured mixes section. A broadcast contains two mixes, Hour 1 and Hour 2. You can click each mix name to view and edit it.</p>
+
+<br />
+
+<p style="text-decoration: underline">Mixes</p>
+<p>A mix has a name, an image which appears in the sidepanel, a background image, a Soundcloud ID and a Mixcloud ID. The Soundcloud ID <b>must</b>b> be the Soundcloud embed code (the one which looks like <i>&lt;iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com....../iframe&gt;</i>). A mix is made up of many tracks.</p>
+
+<br />
+
+<p style="text-decoration: underline">Tracks</p>
+<p>Tracks appear in the tracklist in the sidepanel. Each track has a name, artist, publisher, composer, label, catalogue number and duration.</p>
 
 
 <%= content_for :sidebar do %>
-
-sidebar Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+    <a href="/casein/broadcasts/new"><div class="icon"><span class="glyphicon glyphicon-plus-sign" title="Plus Sign"></span></div>Add a new show</a>
 <% end %>
