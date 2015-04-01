@@ -1,10 +1,12 @@
+require 'roo'
+
 class Broadcast < ActiveRecord::Base
   before_save :set_tags
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :processed_session_name
 
-  has_many :mixes
+  has_many :mixes, dependent: :destroy
 
   scope :contains, -> (session_name) { where("session_name REGEXP '[[:<:]]#{session_name}[[:>:]]'") }
 
@@ -28,8 +30,191 @@ class Broadcast < ActiveRecord::Base
 
   has_attached_file :background_image, :styles => { :thumb => "144x90>" }, :default_url => "/images/:style/ss_broadcast_bg.png"
 
+  has_attached_file :spreadsheet
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
 
   accepts_nested_attributes_for :mixes, allow_destroy: true
+
+  def sheet_to_show
+    spreadsheet = Roo::Excel.new("#{self.spreadsheet.queued_for_write[:original].path}", file_warning: :ignore)
+
+    # SETUP
+    sheet = spreadsheet.sheet(0)
+    broadcast_date = sheet.row(1)[2]
+    session_name = sheet.row(1)[4]
+    row_start = sheet.first_row
+    row_stop = sheet.last_row
+    currentRow = 0
+    part1tracks = []
+    part2tracks = []
+    part3tracks = []
+    part4tracks = []
+    part1row = part2row = part3row = part4row = nil
+
+    # CHECK WHERE EACH PART STARTS
+    (1..row_stop).each do |i|
+      currentCell = sheet.cell(i, 1);
+      next if currentCell.nil?
+      if currentCell.include? "PART 1"
+          puts "1 true"
+          part1row = i
+          puts "part 1 starts at row #{i}"
+      elsif currentCell.include? "PART 2"
+          puts "2 true"
+          part2row = i
+          puts "part 2 starts at row #{i}"
+      elsif currentCell.include? "PART 3"
+          puts "3 true"
+          part3row = i
+          puts "part 3 starts at row #{i}"
+      elsif currentCell.include? "PART 4"
+          puts "4 true"
+          part4row = i
+          puts "part 1 starts at row #{i}"
+      end
+    end
+
+    # CREATE TRACKS FOR EACH ROW
+    (part1row+1..part2row-1).each do |row|
+       next if sheet.row(row)[1].nil?
+       part1tracks.push(Track.new({
+          mix_id: 1,
+          artist: sheet.row(row)[1],
+          title: sheet.row(row)[2],
+          composed: sheet.row(row)[3],
+          published: sheet.row(row)[4],
+          record_label: sheet.row(row)[5],
+          catalogue_no: sheet.row(row)[6],
+          duration: sheet.row(row)[7]
+        }))
+    end
+
+    (part2row+2..part3row-1).each do |row|
+       next if sheet.row(row)[0].nil?
+       part2tracks.push(Track.new({
+        mix_id: 1,
+        artist: sheet.row(row)[1],
+        title: sheet.row(row)[2],
+        composed: sheet.row(row)[3],
+        published: sheet.row(row)[4],
+        record_label: sheet.row(row)[5],
+        catalogue_no: sheet.row(row)[6],
+        duration: sheet.row(row)[7]
+        }))
+    end
+
+    (part3row+1..part4row-1).each do |row|
+       next if sheet.row(row)[0].nil?
+       part3tracks.push(Track.new({
+        mix_id: 2,
+        artist: sheet.row(row)[1],
+        title: sheet.row(row)[2],
+        composed: sheet.row(row)[3],
+        published: sheet.row(row)[4],
+        record_label: sheet.row(row)[5],
+        catalogue_no: sheet.row(row)[6],
+        duration: sheet.row(row)[7]
+        }))
+    end
+
+    (part4row+1..sheet.last_row).each do |row|
+       next if sheet.row(row)[0].nil?
+       part4tracks.push(Track.new({
+        mix_id: 2,
+        artist: sheet.row(row)[1],
+        title: sheet.row(row)[2],
+        composed: sheet.row(row)[3],
+        published: sheet.row(row)[4],
+        record_label: sheet.row(row)[5],
+        catalogue_no: sheet.row(row)[6],
+        duration: sheet.row(row)[7]
+      }))
+    end
+
+    puts "#{part1tracks.length} tracks in part 1"
+    puts "#{part2tracks.length} tracks in part 2"
+    puts "#{part3tracks.length} tracks in part 3"
+    puts "#{part4tracks.length} tracks in part 4"
+
+    # CREATE MIXES FOR EACH PART (1+2 AND 3+4)
+    if part1tracks.length && part2tracks.length && part3tracks.length && part4tracks.length
+        mix1 = Mix.new({
+          name: "#{sheet.cell(part1row, 2)}, #{sheet.cell(part2row, 2)}",
+        })
+        part1tracks.each do |track|
+          mix1.tracks << track
+        end
+        part2tracks.each do |track|
+          mix1.tracks << track
+        end
+
+        mix2 = Mix.new({
+          name: "#{sheet.cell(part3row, 2)}, #{sheet.cell(part4row, 2)}",
+        })
+        part3tracks.each do |track|
+          mix1.tracks << track
+        end
+        part4tracks.each do |track|
+          mix1.tracks << track
+        end
+
+    elsif part1tracks.length && part2tracks.length && part3tracks.length
+        mix1 = Mix.new({
+          name: "#{sheet.cell(part1row, 2)}, #{sheet.cell(part2row, 2)}",
+          })
+        part1tracks.each do |track|
+          mix1.tracks << track
+        end
+        part2tracks.each do |track|
+          mix1.tracks << track
+        end
+
+        mix2 = Mix.new({
+          name: "#{sheet.cell(part3row, 2)}",
+        })
+        mix2.tracks << part3tracks
+
+    elsif part1tracks.length && part2tracks.length
+        mix1 = Mix.new({
+          name: "#{sheet.cell(part1row, 2)}",
+        })
+        part1tracks.each do |track|
+          mix1.tracks << track
+        end
+
+        mix2 = Mix.new({
+          name: "#{sheet.cell(part2row, 2)}",
+        })
+        part2tracks.each do |track|
+          mix2.tracks << track
+        end
+
+    elsif part1tracks.length
+        mix1 = Mix.new({
+          name: "#{sheet.cell(part1row, 2)}",
+        })
+        part1tracks.each do |track|
+          mix1.tracks << track
+        end
+    end
+
+    # set broadcast name
+    self.broadcast_date = broadcast_date
+    self.session_name = session_name
+
+    if mix1
+      self.mixes << mix1
+    end
+    if mix2
+      self.mixes << mix2
+    end
+
+    if self.save
+      return true
+    else
+      return false
+    end
+  end
 end

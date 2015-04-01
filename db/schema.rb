@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330135922) do
+ActiveRecord::Schema.define(version: 20150401091854) do
 
   create_table "broadcasts", force: :cascade do |t|
     t.text     "session_name",                  limit: 65535
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20150330135922) do
     t.string   "background_image_content_type", limit: 255
     t.integer  "background_image_file_size",    limit: 4
     t.datetime "background_image_updated_at"
+    t.string   "spreadsheet_file_name",         limit: 255
+    t.string   "spreadsheet_content_type",      limit: 255
+    t.integer  "spreadsheet_file_size",         limit: 4
+    t.datetime "spreadsheet_updated_at"
   end
 
   create_table "casein_admin_users", force: :cascade do |t|
@@ -80,6 +84,9 @@ ActiveRecord::Schema.define(version: 20150330135922) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "broadcast_id",                  limit: 4
+    t.string   "url",                           limit: 255
+    t.text     "soundcloudId",                  limit: 65535
+    t.text     "mixcloudId",                    limit: 65535
     t.string   "background_image_file_name",    limit: 255
     t.string   "background_image_content_type", limit: 255
     t.integer  "background_image_file_size",    limit: 4
@@ -88,9 +95,6 @@ ActiveRecord::Schema.define(version: 20150330135922) do
     t.string   "mix_image_content_type",        limit: 255
     t.integer  "mix_image_file_size",           limit: 4
     t.datetime "mix_image_updated_at"
-    t.string   "url",                           limit: 255
-    t.text     "soundcloudId",                  limit: 65535
-    t.text     "mixcloudId",                    limit: 65535
   end
 
   add_index "mixes", ["broadcast_id"], name: "index_mixes_on_broadcast_id", using: :btree

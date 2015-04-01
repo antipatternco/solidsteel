@@ -4,7 +4,7 @@ class Mix < ActiveRecord::Base
 
 	belongs_to :broadcast
 
-	has_many :tracks
+	has_many :tracks, dependent: :destroy
 
 	def self.get_latest
 		self.order("broadcast_date DESC").first

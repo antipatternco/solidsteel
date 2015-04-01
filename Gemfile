@@ -33,6 +33,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'paperclip-meta'
 gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'roo'
 
 group :development do
   gem "spring"
