@@ -80,9 +80,6 @@ ActiveRecord::Schema.define(version: 20150330135922) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "broadcast_id",                  limit: 4
-    t.string   "url",                           limit: 255
-    t.text     "soundcloudId",                  limit: 65535
-    t.text     "mixcloudId",                    limit: 65535
     t.string   "background_image_file_name",    limit: 255
     t.string   "background_image_content_type", limit: 255
     t.integer  "background_image_file_size",    limit: 4
@@ -91,6 +88,9 @@ ActiveRecord::Schema.define(version: 20150330135922) do
     t.string   "mix_image_content_type",        limit: 255
     t.integer  "mix_image_file_size",           limit: 4
     t.datetime "mix_image_updated_at"
+    t.string   "url",                           limit: 255
+    t.text     "soundcloudId",                  limit: 65535
+    t.text     "mixcloudId",                    limit: 65535
   end
 
   add_index "mixes", ["broadcast_id"], name: "index_mixes_on_broadcast_id", using: :btree

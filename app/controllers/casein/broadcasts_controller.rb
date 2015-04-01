@@ -27,15 +27,17 @@ module Casein
     end
 
     def create
-      @broadcast = Broadcast.new broadcast_params
+      puts broadcast_params.inspect
+      #@csv = broadcast_params
     
-      if @broadcast.save
-        flash[:notice] = 'Broadcast created'
-        redirect_to casein_broadcasts_path
-      else
-        flash.now[:warning] = 'There were problems when trying to create a new broadcast'
-        render :action => :new
-      end
+      # Broadcast.new broadcast_params
+      # if @broadcast.save
+      #   flash[:notice] = 'Broadcast created'
+      #   redirect_to casein_broadcast_path(@broadcast)
+      # else
+      #   flash.now[:warning] = 'There were problems when trying to create a new broadcast'
+      #   render :action => :new
+      # end
     end
   
     def update
@@ -63,7 +65,7 @@ module Casein
     private
       
       def broadcast_params
-        params.require(:broadcast).permit(:session_name, :broadcast_date, :notes, :altnotes, :image, :featured, :highlight, :tag_list => [], mixes_attributes: [:id, :url, :name])
+        params.require(:broadcast).permit(:session_name, :broadcast_date, :notes, :altnotes, :image, :featured, :highlight, :excel, :tag_list => [], mixes_attributes: [:id, :url, :name])
       end
 
   end

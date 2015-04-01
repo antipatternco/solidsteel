@@ -4,7 +4,11 @@
 
 <%= form_for @broadcast, :url => casein_broadcasts_path do |f| %>
 	
-	<%= render :partial => 'casein/broadcasts/form', :locals => { :f => f } %>
+
+    <div class="col-lg-6">
+        <%= file_field('broadcast', 'excel')%>
+    </div>
+	<%# render :partial => 'casein/broadcasts/form', :locals => { :f => f } %>
 	
 	<p class="submits">
 		<%= link_to 'Cancel', casein_broadcasts_path, :class => 'btn btn-mini btn-danger' %>
