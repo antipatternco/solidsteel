@@ -34,10 +34,9 @@ class Importer
     end
     
     # call sub-importer modules
-    import_broadcasts
-    import_tracks
-    import_synopsis
-
+    # import_broadcasts
+    # import_tracks
+    # import_synopsis
     import_audio
   end
 

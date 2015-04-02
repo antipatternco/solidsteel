@@ -1,6 +1,6 @@
 namespace :solidsteel do
   require Rails.root + "lib/tasks/importer"
-  require Rails.root + "lib/tasks/merger"
+  #require Rails.root + "lib/tasks/merger"
 
   desc "Import old database, usage: rake project_name:import['old_database_name']"
   task :import, [:oldDatabase] => :environment do |t, args|
@@ -20,15 +20,15 @@ namespace :solidsteel do
 
 
 
-  desc "Merge mixes, usage: rake project_name:merge"
-  task :merge, [:oldDatabase] => :environment do |t, args|
+  # desc "Merge mixes, usage: rake project_name:merge"
+  # task :merge, [:oldDatabase] => :environment do |t, args|
 
-    merger = Merger.new
+  #   merger = Merger.new
 
-    puts "* * * * * * * *"
-    puts "execute merging!!!"
-    puts "* * * * * * * *"
+  #   puts "* * * * * * * *"
+  #   puts "execute merging!!!"
+  #   puts "* * * * * * * *"
 
-    merger.execute
-  end
+  #   merger.execute
+  # end
 end
