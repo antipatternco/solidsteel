@@ -38,19 +38,19 @@ $(function() {
 	</div>
 
 	<div class="col-lg-6" id="image">
-		<%= casein_file_field f, f.object, "broadcast", :image , { :casein_label => "Broadcast image (160px wide, 160px tall)"}%>
-		<% if @broadcast.image? then %>
-			<%= image_tag(@broadcast.image, width: '300') %>
-			<p id="delete_image">Delete image?</p>
-			<% else content_tag(:span, "No image yet") end %>
-	</div>
-
-	<div class="col-lg-6" id="image">
 		<%= casein_file_field f, f.object, "broadcast", :background_image , { :casein_label => "Broadcast featured image (1440px wide, 900px tall)"}%>
 		<% if @broadcast.background_image? then %>
 			<%= image_tag(@broadcast.background_image, width: '300') %>
 			<p id="delete_image">Delete background image?</p>
 			<% else content_tag(:span, "No background image yet") end %>
+	</div>
+
+	<div class="col-lg-6" id="image">
+		<%= casein_file_field f, f.object, "broadcast", :image , { :casein_label => "Broadcast image (160px wide, 160px tall)"}%>
+		<% if @broadcast.image? then %>
+			<%= image_tag(@broadcast.image, width: '300') %>
+			<p id="delete_image">Delete image?</p>
+			<% else content_tag(:span, "No image yet") end %>
 	</div>
 
 	<div class="col-lg-12">
