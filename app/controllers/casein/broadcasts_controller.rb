@@ -40,24 +40,25 @@ module Casein
       @casein_page_title = 'Update broadcast'
       
       @broadcast = Broadcast.find params[:id]
-      puts params
-      puts params
-      puts params
-      puts params
 
-      if params[:delete_image] == "delete_image"
+      if params[:delete_image] == "bg_image"
+        @broadcast.background_image.clear
+        @broadcast.save
+        flash[:notice] = 'background image deleted'
+        redirect_to casein_broadcast_path(@broadcast)
+      end
+      if params[:delete_image] == "image"
         @broadcast.image.clear
         @broadcast.save
         flash[:notice] = 'image deleted'
         redirect_to casein_broadcast_path(@broadcast)
+      end
+      if @broadcast.update_attributes broadcast_params
+        flash[:notice] = 'Broadcast has been updated'
+        redirect_to casein_broadcasts_path
       else
-        if @broadcast.update_attributes broadcast_params
-          flash[:notice] = 'Broadcast has been updated'
-          redirect_to casein_broadcasts_path
-        else
-          flash.now[:warning] = 'There were problems when trying to update this broadcast'
-          render :action => :show
-        end
+        flash.now[:warning] = 'There were problems when trying to update this broadcast'
+        render :action => :show
       end
     end
  
