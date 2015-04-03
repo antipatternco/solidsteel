@@ -7,9 +7,3 @@
 <div class="text-center">
 	<%= will_paginate @mixes %>
 </div>
-
-<%= content_for :sidebar do %>
-
-	<li><%= link_to "#{casein_show_icon "plus-sign"}Add a new mix".html_safe, new_casein_mix_path %></li>
-
-<% end %>

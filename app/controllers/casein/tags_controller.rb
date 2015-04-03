@@ -18,6 +18,9 @@ module Casein
     def new
       @casein_page_title = 'Add a new tag'
       @tag = ActsAsTaggableOn::Tag.new
+      puts "** ** ** ** ** **"
+      puts @tag.inspect
+      puts "?? ?? ?? ?? ?? ??"
     end
 
     def create
@@ -57,7 +60,7 @@ module Casein
     private
       
       def tag_params
-        params.require(:tag).permit(:name)
+        params.require(:tag).permit(:tag_list)
       end
 
   end
