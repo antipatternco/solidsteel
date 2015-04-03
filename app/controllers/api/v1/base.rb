@@ -4,7 +4,6 @@ module API
   module V1
     class Base < Grape::API
 
-      
       mount API::V1::Djs
       mount API::V1::Broadcasts
       mount API::V1::Mixes

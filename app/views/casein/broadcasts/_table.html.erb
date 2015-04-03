@@ -18,7 +18,7 @@
 			<td><%= casein_table_cell_link broadcast.broadcast_date.strftime("%d %^b %Y"), casein_broadcast_path(broadcast) %></td>
 			
 			<td><% if broadcast.mixes[0]%><%= casein_table_cell_link broadcast.mixes[0].name, casein_mix_path(broadcast.mixes[0]) %><% end %></td>
-			<td><% if broadcast.mixes[1]%><%= casein_table_cell_link broadcast.mixes[1].name, casein_mix_path(broadcast.mixes[0]) %><% end %></td>
+			<td><% if broadcast.mixes[1]%><%= casein_table_cell_link broadcast.mixes[1].name, casein_mix_path(broadcast.mixes[1]) %><% end %></td>
 			<td><% if broadcast.highlight %>yes<% end %></td>
 			<td><% if broadcast.featured  %>yes<% end %></td>
 			<td><% broadcast.tags.each do |t| %><%= t %><br /><% end %></td>

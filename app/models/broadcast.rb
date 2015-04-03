@@ -4,7 +4,6 @@ class Broadcast < ActiveRecord::Base
   before_save :set_tags
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :processed_session_name
 
   has_many :mixes, dependent: :destroy
 

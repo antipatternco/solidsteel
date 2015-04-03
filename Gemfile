@@ -28,12 +28,16 @@ gem "grape"
 gem "grape-active_model_serializers", :git => "https://github.com/jrhe/grape-active_model_serializers"
 gem "grape-swagger-rails"
 gem "rack-cors", require: "rack/cors"
-gem 'casein', '~>5.1.1'
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'authlogic'
+gem 'casein', '5.1.1.5', :path => "vendor/gems/casein-5.1.1.5"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'paperclip-meta'
 gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
+gem 'grape-rails-cache'
 
 group :development do
   gem "spring"
