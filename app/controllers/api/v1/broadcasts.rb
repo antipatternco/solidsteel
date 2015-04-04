@@ -9,7 +9,7 @@ module API
           if params[:year].present?
             Broadcast.year(params[:year]).order('broadcast_date ASC')
           elsif params[:contains].present?
-            Broadcast.contains(params[:contains]).to_json
+            Broadcast.contains(params[:contains])
           elsif params[:featured].present?
             Broadcast.featured
           elsif params[:highlights].present?
