@@ -16,6 +16,9 @@ Bundler.require(*Rails.groups)
 
 module Api
   class Application < Rails::Application
+
+    config.cache_store = :file_store, Rails.root.to_s + "/public/cache/"
+
     config.middleware.use Rack::Cors do
       allow do
         origins "*"
