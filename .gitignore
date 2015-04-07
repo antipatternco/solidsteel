@@ -15,4 +15,3 @@
 /.vagrant/*
 /config/database.yml
 package.box
-/public/cache

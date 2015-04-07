@@ -1,5 +1,4 @@
 require "grape-swagger"
-require 'grape-active_model_serializers'
 
 module API
   module V1
@@ -7,9 +6,9 @@ module API
 
       mount API::V1::Djs
       mount API::V1::Broadcasts
-      #mount API::V1::Mixes
-      #mount API::V1::Tracks
-      #mount API::V1::Search
+      mount API::V1::Mixes
+      mount API::V1::Tracks
+      mount API::V1::Search
       # mount API::V1::AnotherResource
 
       add_swagger_documentation(
