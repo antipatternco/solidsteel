@@ -41,7 +41,7 @@ module Casein
     
       if @mix.update_attributes mix_params
         flash[:notice] = 'Mix has been updated'
-        redirect_to casein_mixes_path
+        redirect_to casein_mix_path(@mix)
       else
         flash.now[:warning] = 'There were problems when trying to update this mix'
         render :action => :show
@@ -59,7 +59,7 @@ module Casein
     private
       
       def mix_params
-        params.require(:mix).permit(:name, :part, :url, :soundcloudId, :mixcloudId, :background_image, :mix_image)
+        params.require(:mix).permit(:name, :part, :url, :soundcloudId, :mixcloudId, :background_image, :mix_image, :secret)
       end
 
   end
