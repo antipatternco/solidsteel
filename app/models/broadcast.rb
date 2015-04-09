@@ -27,7 +27,10 @@ class Broadcast < ActiveRecord::Base
 
 	has_attached_file :image, :styles => { :thumb => "60x60>" }, :default_url => "/images/:style/ss_broadcast_icon.png"
 
-  has_attached_file :background_image, :styles => { :thumb => "144x90>" }, :default_url => "/images/:style/ss_broadcast_bg.png"
+  has_attached_file :background_image, :styles => { :small => "200x125>" }, :default_url => "/images/:style/ss_broadcast_bg.png"
+  def background_image_thumb_url
+    background_image.url(:small)
+  end
 
   has_attached_file :spreadsheet
 
