@@ -37,7 +37,7 @@ gem 'paperclip-meta'
 gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
-gem 'grape-rails-cache'
+gem 'newrelic_rpm'
 
 group :development do
   gem "spring"
