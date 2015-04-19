@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :landing
 	end
 
-  mount API::Base, at: "/"
-  mount GrapeSwaggerRails::Engine, at: "/documentation"
+    resources :broadcasts
   
 end
