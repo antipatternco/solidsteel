@@ -38,6 +38,7 @@ gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
 gem 'newrelic_rpm'
+gem 'actionpack-page_caching'
 
 group :development do
   gem "spring"
