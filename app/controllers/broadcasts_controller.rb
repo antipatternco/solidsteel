@@ -1,23 +1,38 @@
 class BroadcastsController < ApplicationController
 
-    caches_page :show, :index
+    caches_page :year, :search, :featured, :highlights, :show, :djs
 
-    def index
-        if params[:year].present?
-            @broadcasts = Broadcast.year(params[:year]).order('broadcast_date ASC')
-        elsif params[:contains].present?
-            @broadcasts = Broadcast.contains(params[:contains])
-        elsif params[:featured].present?
-            @broadcasts = Broadcast.featured
-        elsif params[:highlights].present?
-            @broadcasts = Broadcast.highlights
-        else
-            "you need to supply a year query parameter value like /broadcasts?year=2015, or use /broadcasts/latest"
-        end
+    def year
+        @broadcasts = Broadcast.year(params[:year]).order('broadcast_date ASC')
+        render 'index'
+    end
+
+    def search
+        @broadcasts = Broadcast.contains(params[:searchterm])
+        render 'index'
+    end
+
+    def featured
+        @broadcasts = Broadcast.featured
+        render 'index'
+    end
+
+    def highlights
+        @broadcasts = Broadcast.highlights
+        render 'index'
+    end
+
+    def latest
+        @broadcast = Broadcast.get_latest
+        render 'show'
     end
 
     def show
         @broadcast = Broadcast.find(params[:id])
+    end
+
+    def djs
+        @djs = Broadcast.tag_counts.where('name like ?', "#{params[:alpha]}%").order('name')
     end
 
 end

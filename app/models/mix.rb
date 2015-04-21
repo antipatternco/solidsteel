@@ -13,12 +13,12 @@ class Mix < ActiveRecord::Base
 	validates :name, :presence => true
 
 	has_attached_file :background_image, :styles => { :medium => "720x" }, :default_url => ""
-  	validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
 
-  	has_attached_file :mix_image, :styles => { :thumb => "60x" }, :default_url => "/images/:style/ss_120_x_120.gif"
-  	validates_attachment_content_type :mix_image, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :mix_image, :styles => { :thumb => "60x" }, :default_url => "/images/:style/ss_120_x_120.gif"
+  validates_attachment_content_type :mix_image, :content_type => /\Aimage\/.*\Z/
 
-  	def extract_soundcloud_id
+  def extract_soundcloud_id
   		#puts self.soundcloudId
 		if self.soundcloudId
             if self.soundcloudId[/.*tracks\/(\d*)[&|%]/,1]

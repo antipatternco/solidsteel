@@ -1,7 +1,0 @@
-<h1>solid steel broadcasts</h1>
-
-<ul class="broadcasts">
-<% @broadcasts.each do |broadcast| %>
-  <li><%= link_to "#{broadcast.session_name} - #{broadcast.broadcast_date.strftime("%d %^b %Y")}", broadcast_path(broadcast) %></li>
-<% end %>
-</ul>
