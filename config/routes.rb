@@ -9,7 +9,13 @@ Rails.application.routes.draw do
     resources :landing
 	end
 
-  mount API::Base, at: "/"
-  mount GrapeSwaggerRails::Engine, at: "/documentation"
-  
+	get '/api/broadcasts/:id' => 'broadcasts/#show'
+	get '/api/year/:year' => 'broadcasts/#year'
+	get '/api/search/:contains' => 'broadcasts/#search'
+	get '/api/featured' => 'broadcasts/#featured'
+	get '/api/latest' => 'broadcasts/#latest'
+	get '/api/djs/:name' => 'broadcasts/#djs'
+	
+end
+
 end
