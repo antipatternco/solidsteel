@@ -9,7 +9,7 @@ class Broadcast < ActiveRecord::Base
 
   scope :contains, -> (session_name) { where("session_name REGEXP '[[:<:]]#{session_name}[[:>:]]'") }
 
-  scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ) if year.present? }
+  scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ).order("broadcast_date DESC") if year.present? }
 
   scope :featured, -> { where(featured: true) }
 
