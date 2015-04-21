@@ -1,7 +1,9 @@
 class BroadcastsController < ApplicationController
 
+	caches_page :show, :year, :search, :featured, :latest, :djs
+
 	def show
-		@broadcast = Broadcasts.find(params[:id])
+		@broadcast = Broadcast.find(params[:id])
 		render json: @broadcast
 	end
 

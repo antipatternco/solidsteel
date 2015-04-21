@@ -23,10 +23,6 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem "env"
-gem "active_model_serializers"
-gem "grape"
-gem "grape-active_model_serializers", :git => "https://github.com/jrhe/grape-active_model_serializers"
-gem "grape-swagger-rails"
 gem "rack-cors", require: "rack/cors"
 gem 'bootstrap-sass'
 gem 'will_paginate'
@@ -37,7 +33,7 @@ gem 'paperclip-meta'
 gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
-gem 'grape-rails-cache'
+gem 'actionpack-page_caching'
 
 group :development do
   gem "spring"
