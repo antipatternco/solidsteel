@@ -34,6 +34,7 @@ gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
 gem 'actionpack-page_caching'
+gem 'jbuilder'
 
 group :development do
   gem "spring"

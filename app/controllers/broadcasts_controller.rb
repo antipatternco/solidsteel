@@ -9,7 +9,7 @@ class BroadcastsController < ApplicationController
 
 	def year
 		@broadcasts = Broadcast.year(params[:year]).order('broadcast_date ASC')
-		render json: @broadcasts
+		render 'index'
 	end
 
 	def search

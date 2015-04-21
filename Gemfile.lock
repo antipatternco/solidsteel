@@ -152,6 +152,9 @@ GEM
       i18n
       term-ansicolor
       terminal-table
+    jbuilder (2.2.13)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -332,6 +335,7 @@ DEPENDENCIES
   formulaic
   high_voltage
   i18n-tasks
+  jbuilder
   jquery-rails
   launchy
   mysql2
