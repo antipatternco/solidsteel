@@ -12,7 +12,7 @@ class Mix < ActiveRecord::Base
 
 	validates :name, :presence => true
 
-	has_attached_file :background_image, :styles => { :medium => "720x" }, :default_url => ""
+	has_attached_file :background_image, :styles => { :medium => "720x" }, :default_url => "/images/:style/ss-mix-default-bg-1400.jpg"
   	validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
 
   	has_attached_file :mix_image, :styles => { :thumb => "60x" }, :default_url => "/images/:style/ss_120_x_120.gif"
