@@ -7,7 +7,7 @@ class Broadcast < ActiveRecord::Base
 
   has_many :mixes, dependent: :destroy
 
-  scope :contains, -> (session_name) { where("session_name REGEXP '[[:<:]]#{session_name}[[:>:]]'") }
+  scope :contains, -> (session_name) { where("session_name REGEXP '[[:<:]]#{session_name}[[:>:]]'").order("broadcast_date DESC") }
 
   scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ).order("broadcast_date DESC") if year.present? }
 
