@@ -37,9 +37,12 @@ gem 'paperclip-meta'
 gem 'nested_form_fields'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'roo'
-gem 'newrelic_rpm'
+gem 'soundcloud'
+gem 'delayed_job_active_record'
+gem "daemons"
 
 group :development do
+  gem "delayed_job_web"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"

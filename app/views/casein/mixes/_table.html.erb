@@ -6,6 +6,8 @@
 			<th><%= casein_sort_link "Name", :name %></th>
 			<th><%= casein_sort_link "Part", :part %></th>
 			<th><%= casein_sort_link "Soundcloud", :soundcloudId %></th>
+			<th><%= casein_sort_link "permalink", :permalink %></th>
+			<th><%= casein_sort_link "downloadlink", :downloadlink %></th>
 			<th><%= casein_sort_link "Broadcast", :broadcast_id %></th>
 			<th>&nbsp;</th>
 		</tr>
@@ -16,6 +18,8 @@
 			<td><%= casein_table_cell_link "#{mix.name} (#{mix.broadcast.session_name}, #{mix.broadcast.broadcast_date.strftime("%d %^b %Y")})", casein_mix_path(mix) %></td>
 			<td><%= casein_table_cell_link mix.part, casein_mix_path(mix) %></td>
 			<td><%= casein_table_cell_link mix.soundcloudId, casein_mix_path(mix) %></td>
+			<td><%= mix.permalink %></td>
+			<td><%= mix.downloadlink %></td>
 			<td><%= casein_table_cell_link mix.broadcast.id, casein_broadcast_path(mix.broadcast.id) %></td>
 			<td class="delete">
 				<%= link_to(casein_show_row_icon("trash"), casein_mix_path(mix), :method => :delete, :data => { :confirm => "Are you sure you want to delete this mix?" }) %>
