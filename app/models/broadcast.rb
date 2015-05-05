@@ -19,29 +19,26 @@ class Broadcast < ActiveRecord::Base
 
   def get_soundcloud_data
     delay.get_downloadlink_and_canonical_link
-    # snippet = Snippet.find(snippet_id)
-    # uri = URI.parse("http://pygments.appspot.com/")
-    # request = Net::HTTP.post_form(uri, lang: snippet.language, code: snippet.plain_code)
-    #self.send(:update_without_callbacks(:session_name, Time.new))
-    #self.update_attribute(:session_name, Time.new)
   end
 
   def get_downloadlink_and_canonical_link
     client = Soundcloud.new(:client_id => 'ab4a60b41abdd45663bc085f22134d4f')
     self.mixes.each do |mix|
       if mix.soundcloudId && mix.soundcloudId != ''
-        Delayed::Worker.logger.debug("************ Log Entry")
-        Delayed::Worker.logger.debug("soundcloudId: #{mix.soundcloudId}.")
         track = client.get("/tracks/#{mix.soundcloudId}")
-        Delayed::Worker.logger.debug("************ Log Entry")
-        Delayed::Worker.logger.debug(track)
-        Delayed::Worker.logger.debug("End of log entry -----------------")
         permalink = track.permalink_url
         downloadlink = track.download_url
         playbackcount = track.playback_count
-        mix.update_column(:permalink, permalink)
-        if track.downloadable
-          mix.update_column(:downloadlink, downloadlink)
+        if permalink
+          mix.update_column(:permalink, permalink)
+        end
+        if downloadlink
+          if track.downloadable
+            mix.update_column(:downloadlink, downloadlink)
+          end
+        end
+        if playbackcount
+          mix.update_column(:playbackcount, playbackcount)
         end
       end
     end
