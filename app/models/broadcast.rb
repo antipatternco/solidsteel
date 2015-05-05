@@ -29,9 +29,13 @@ class Broadcast < ActiveRecord::Base
   def get_downloadlink_and_canonical_link
     client = Soundcloud.new(:client_id => 'ab4a60b41abdd45663bc085f22134d4f')
     self.mixes.each do |mix|
-
-      if mix.soundcloudId
+      if mix.soundcloudId && mix.soundcloudId != ''
+        Delayed::Worker.logger.debug("************ Log Entry")
+        Delayed::Worker.logger.debug("soundcloudId: #{mix.soundcloudId}.")
         track = client.get("/tracks/#{mix.soundcloudId}")
+        Delayed::Worker.logger.debug("************ Log Entry")
+        Delayed::Worker.logger.debug(track)
+        Delayed::Worker.logger.debug("End of log entry -----------------")
         permalink = track.permalink_url
         downloadlink = track.download_url
         playbackcount = track.playback_count
