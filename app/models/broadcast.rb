@@ -13,7 +13,7 @@ class Broadcast < ActiveRecord::Base
 
   scope :year, -> (year) { where(" EXTRACT(YEAR FROM broadcast_date) = ? ", year ).order("broadcast_date DESC") if year.present? }
 
-  scope :featured, -> { where(featured: true) }
+  scope :featured, -> { where(featured: true).order("broadcast_date ASC") }
 
   scope :highlights, -> { where(highlight: true) }
 
